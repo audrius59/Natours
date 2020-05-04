@@ -8,6 +8,7 @@ const hpp = require('hpp');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const AppError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
 
@@ -55,6 +56,8 @@ app.use(
     ]
   })
 );
+
+app.use(compression());
 
 const limiter = rateLimit({
   max: 100,
